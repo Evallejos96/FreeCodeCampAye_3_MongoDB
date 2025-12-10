@@ -104,9 +104,14 @@ const removeById = (personId, done) => {
   });
 };
 
+// Eliminar muchas personas con nombre "Mary"
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
-  done(null /*, data*/);
+
+  Person.remove({ name: nameToRemove }, (err, result) => {
+    if (err) return done(err);
+    return done(null, result);
+  });
 };
 
 const queryChain = (done) => {
