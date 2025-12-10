@@ -6,7 +6,7 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true 
 });
 
-let Person;
+Person = mongoose.model("Person", personSchema);
 
 //Ejercicio 2 - AGREGAR ACÁ EL SCHEMA Y EL MODELO
 const personSchema = new mongoose.Schema({
@@ -15,7 +15,6 @@ const personSchema = new mongoose.Schema({
   favoriteFoods: [String]
 });
 
-Person = mongoose.model("Person", personSchema);
 
 //Ejercicio 3 - Crear y Guardar Persona
 const createAndSavePerson = (done) => {
