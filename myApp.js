@@ -81,9 +81,19 @@ const findEditThenSave = (personId, done) => {
   });
 };
 
+// Encontrar por nombre y actualizar edad
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
-  done(null /*, data*/);
+
+  Person.findOneAndUpdate(
+    { name: personName },
+    { age: ageToSet },
+    { new: true },
+    (err, updatedDoc) => {
+      if (err) return done(err);
+      return done(null, updatedDoc);
+    }
+  );
 };
 
 const removeById = (personId, done) => {
