@@ -6,18 +6,17 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true 
 });
 
-
-//Ejercicio 2 - AGREGAR ACÁ EL SCHEMA Y EL MODELO
+// Ejercicio 2 - Schema
 const personSchema = new mongoose.Schema({
   name: { type: String, required: true },
   age: Number,
   favoriteFoods: [String]
 });
 
+// Ejercicio 2 - Modelo
+const Person = mongoose.model("Person", personSchema);
 
-//Ejercicio 3 - Crear y Guardar Persona
-Person = mongoose.model("Person", personSchema);
-
+// Ejercicio 3 - Crear y Guardar Persona
 const createAndSavePerson = (done) => {
   const person = new Person({
     name: "Ayelen",
@@ -30,7 +29,6 @@ const createAndSavePerson = (done) => {
     return done(null, data);
   });
 };
-
 
 const createManyPeople = (arrayOfPeople, done) => {
   done(null /*, data*/);
@@ -50,13 +48,11 @@ const findPersonById = (personId, done) => {
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-
   done(null /*, data*/);
 };
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
-
   done(null /*, data*/);
 };
 
@@ -66,19 +62,13 @@ const removeById = (personId, done) => {
 
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
-
   done(null /*, data*/);
 };
 
 const queryChain = (done) => {
   const foodToSearch = "burrito";
-
   done(null /*, data*/);
 };
-
-/** **Well Done !!**
-/* You completed these challenges, let's go celebrate !
- */
 
 //----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
 
