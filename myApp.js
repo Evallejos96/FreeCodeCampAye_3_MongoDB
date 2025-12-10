@@ -114,9 +114,18 @@ const removeManyPeople = (done) => {
   });
 };
 
+// Búsqueda avanzada (query chain)
 const queryChain = (done) => {
   const foodToSearch = "burrito";
-  done(null /*, data*/);
+
+  Person.find({ favoriteFoods: foodToSearch })
+    .sort({ name: 1 })
+    .limit(2)
+    .select("-age")
+    .exec((err, data) => {
+      if (err) return done(err);
+      return done(null, data);
+    });
 };
 
 //----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
