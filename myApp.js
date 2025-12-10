@@ -6,17 +6,19 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true 
 });
 
-// Ejercicio 2 - Schema
+let Person;
+
+//  ACA, en este lugar exacto
 const personSchema = new mongoose.Schema({
   name: { type: String, required: true },
   age: Number,
   favoriteFoods: [String]
 });
 
-// Ejercicio 2 - Modelo
-const Person = mongoose.model("Person", personSchema);
+Person = mongoose.model("Person", personSchema);
+//  acá termina
 
-// Ejercicio 3 - Crear y Guardar Persona
+// Ejercicio 3
 const createAndSavePerson = (done) => {
   const person = new Person({
     name: "Ayelen",
@@ -26,9 +28,10 @@ const createAndSavePerson = (done) => {
 
   person.save((err, data) => {
     if (err) return done(err);
-    return done(null, data);
+    done(null, data);
   });
 };
+
 
 const createManyPeople = (arrayOfPeople, done) => {
   done(null /*, data*/);
