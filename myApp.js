@@ -17,10 +17,20 @@ const personSchema = new mongoose.Schema({
 
 Person = mongoose.model("Person", personSchema);
 
-
+//Ejercicio 3 - Crear y Guardar Persona
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  const person = new Person({
+    name: "Ayelen",
+    age: 26,
+    favoriteFoods: ["asado", "pasta"]
+  });
+
+  person.save((err, data) => {
+    if (err) return done(err);
+    return done(null, data);
+  });
 };
+
 
 const createManyPeople = (arrayOfPeople, done) => {
   done(null /*, data*/);
